@@ -1,0 +1,39 @@
+<% if @user.errors.any? %>
+    <h2 class= "text-center text-danger">errors</h2>
+    <div class= "text-center mb-5 text-danger">
+        <%= @user.errors.full_messages.each do |e| %>
+            <%= e %>
+        <% end %>
+    </div>
+<% end %>
+
+
+
+
+<%= form_with(model: @user, local: true, data: { turbo: false }) do |f| %>
+    <div class="container justify-content-md-center col-5 form-container shadow rounded">
+        <div class="mb-3 ">
+            <p>
+            <%= f.label :UserName, class: "form-label" %></br>
+            <%= f.text_field :name, class: "form-control" %>
+            </p>
+        </div>
+        <div class="mb-3">
+            <p>
+            <%= f.label :email, class: "form-label" %></br>
+            <%= f.email_field :email, class: "form-control"  %>
+            </p>
+        </div>
+        <div class="mb-3">
+            <p>
+            <%= f.label :password, class: "form-label" %></br>
+            <%= f.password_field :password, class: "form-control"  %>
+            </p>
+        </div>
+        <div class="mb-3">
+            <p>
+            <%= f.submit class: "btn-primary" %>
+            </p>
+        </div>
+    </div>
+<% end %>
