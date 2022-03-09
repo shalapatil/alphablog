@@ -4,4 +4,13 @@ module ApplicationHelper
         gravatar_url = "http://secure.gravatar.com/avatar/#{gravatar_id}?s=#{size}"
         image_tag(gravatar_url, alt: user.name, class: "img-thumbnail rounded mx-auto d-block")
     end
+
+    def current_user
+        @current_user ||= User.find(session[:user_id]) if session[:user_id]
+    end
+
+    def logged_in?
+        !!current_user
+    end
+
 end
