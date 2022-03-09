@@ -1,3 +1,11 @@
 <h2 class="text-center">List of all the articles</h2>
 
+<div class = "container">
+<div class = "row justify-content-md-center">
+<div class="digg_pagination center-block align-items-center col-3">
+    <%= will_paginate @articles %>  
+</div>
+</div>
+</div>
+
 <%= render 'articles' %>
