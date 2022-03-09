@@ -28,7 +28,7 @@ class ArticlesController < ApplicationController
 
     def update
         @article = Article.find(params[:id])
-        @article.user = User.first  
+        @article.user = current_user
         if @article.update(params.require(:article).permit(:title, :description))
             flash[:notice] = "Article edited successfully!"
             redirect_to article_path(@article)
