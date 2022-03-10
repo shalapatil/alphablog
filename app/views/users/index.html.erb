@@ -11,7 +11,9 @@
                     <%= gravatar_for user, size: 150 %>
                     <p class="card-text"><%= user.articles.count %></p>
                     <%=link_to 'View', user_path(user), class: "btn btn-outline-success" %>
-                    <%=link_to 'Edit', edit_user_path(user), class: "btn btn-outline-primary" %>
+                    <% if user == current_user %>
+                        <%=link_to 'Edit', edit_user_path(user), class: "btn btn-outline-primary" %>
+                    <%end%>
                 </div>
                 <div class="card-footer text-muted">
                     Joined <%= time_ago_in_words(user.created_at) %> ago
